@@ -1,16 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material";
 
-export const backImg = {
-  colorBallBackground: {
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    width: "100%",
-    height: "100vh",
-  },
-};
-
 export const StyleContainer = styled(Box)(() => ({
   width: "100%",
   height: "100vh",
@@ -39,12 +29,7 @@ export const StyleBall = styled(Box)(() => ({
   height: "44px",
   width: "44px",
   borderRadius: "50%",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  fontWeight: 600,
   marginBottom: "8px",
-  cursor: "grab",
-  color: "#111",
   boxShadow: "0 3px 6px rgba(0,0,0,0.25)",
+  cursor: "grab",
 }));
