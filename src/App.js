@@ -1,11 +1,15 @@
-import { Box } from "@mui/material";
 import TubeBoard from "./components/TubeBoard";
+import { AppWrapper, GameTitle, GameBoardWrapper } from "./components/style";
 
 function App() {
   return (
-    <Box sx={{ width: "100%", height: "100vh" }}>
-      <TubeBoard />
-    </Box>
+    <AppWrapper>
+      <GameTitle>Ball Sort Puzzle</GameTitle>
+
+      <GameBoardWrapper>
+        <TubeBoard />
+      </GameBoardWrapper>
+    </AppWrapper>
   );
 }
 

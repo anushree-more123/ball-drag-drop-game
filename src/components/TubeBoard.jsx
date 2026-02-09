@@ -1,9 +1,17 @@
 import React, { useState } from "react";
-import { Box, Dialog, DialogContent, Typography } from "@mui/material";
+import { Dialog } from "@mui/material";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import BallItem from "./BallItem";
 import { generateColumns } from "./Data";
-import { StyleBallContainer, StyleContainer } from "./style";
+import {
+  StyleBallContainer,
+  StyleContainer,
+  BoardWrapper,
+  SuccessDialogContent,
+  SuccessTitle,
+  SuccessSubtitle,
+  RestartButton,
+} from "./style";
 
 const MAX_BALLS = 4;
 
@@ -51,10 +59,15 @@ const TubeBoard = () => {
     }
   };
 
+  const handleRestart = () => {
+    setColumns(generateColumns());
+    setWin(false);
+  };
+
   return (
     <>
       <DragDropContext onDragEnd={handleDragEnd}>
-        <Box sx={{ width: "100%", height: "100%" }}>
+        <BoardWrapper>
           <StyleContainer>
             {Object.entries(columns).map(([columnId, column]) => (
               <Droppable key={columnId} droppableId={columnId}>
@@ -72,15 +85,17 @@ const TubeBoard = () => {
               </Droppable>
             ))}
           </StyleContainer>
-        </Box>
+        </BoardWrapper>
       </DragDropContext>
 
       <Dialog open={win}>
-        <DialogContent>
-          <Typography variant="h4" align="center">
-            🎉 Hurray! Puzzle Solved!
-          </Typography>
-        </DialogContent>
+        <SuccessDialogContent>
+          <SuccessTitle>Hurray!</SuccessTitle>
+
+          <SuccessSubtitle>Puzzle Solved Successfully!</SuccessSubtitle>
+
+          <RestartButton onClick={handleRestart}>Play Again</RestartButton>
+        </SuccessDialogContent>
       </Dialog>
     </>
   );
